@@ -50,7 +50,7 @@ function CircleJoystick:touched(t)
             self.dy = 0
             self.rotation=0
         else
-            self.rotation=-math.deg(math.atan2(self.x-t.x,self.y-t.y))+180
+            self.rotation=-math.deg(math.atan2(self.x-t.x,self.y-t.y)) - 90
         end
     end
     if not self.dx and not self.dy then

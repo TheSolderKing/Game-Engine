@@ -9,8 +9,6 @@ function SpriteSheet:init(x,y,w,h,img, rows, clms, sequence, init)
     self.iw,self.ih = rows,clms
     --save the sequence the user gives us
     self.sequence = sequence
-    print(sequence)
-    print(self.sequence)
     --save the starting frame
     self.frame = init
     --whether or not to automatically advance in time
@@ -23,7 +21,6 @@ function SpriteSheet:init(x,y,w,h,img, rows, clms, sequence, init)
     self.mesh = mesh()
     self.mesh.texture = self.img
     self.index = self.mesh:addRect(0,0,self.w,self.h)
-    print((self.sequence[self.frame]-1)%self.iw)
     self.mesh:setRectTex(self.index,((self.sequence[self.frame]-1)%self.iw)/self.iw,(self.ih-math.ceil(self.sequence[self.frame]/self.iw))/self.ih,1/self.iw,1/self.ih)
 end
 
@@ -50,8 +47,6 @@ end
 
 function SpriteSheet:advanceFrame()
     self.frame = (self.frame)%(#self.sequence)+1
-    print(self.frame)
-    print(#self.sequence)
     self.mesh:setRectTex(self.index,((self.sequence[self.frame]-1)%self.iw)/self.iw,(self.ih-math.ceil(self.sequence[self.frame]/self.iw))/self.ih,1/self.iw,1/self.ih)
 end
 

@@ -9,12 +9,18 @@
 		<string>Main</string>
 		<string>Buffer</string>
 		<string>CircleJoystick</string>
+		<string>Object</string>
+		<string>Mask</string>
+		<string>RandomSprite</string>
+		<string>SquareButton</string>
 		<string>Client</string>
 		<string>SpriteSheet</string>
-		<string>SquareButton</string>
+		<string>TileMap</string>
 		<string>TurtleDrawing</string>
 	</array>
 	<key>Description</key>
 	<string>No description available</string>
+	<key>Icon</key>
+	<string>Icon.png</string>
 </dict>
 </plist>

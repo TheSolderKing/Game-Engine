@@ -4,7 +4,6 @@
 function setup()
     print("Hello World!")
     readImage("Project:People")
-    b = Buffer('x',0,'y',0)
     ss = SpriteSheet(WIDTH/2,HEIGHT/2,WIDTH/10,HEIGHT/10,readImage("Project:People"),25,25,{1,2,1,3},1)
     
     --[[
@@ -36,6 +35,11 @@ function setup()
     ]]--
     
     c = CircleJoystick(WIDTH/10,HEIGHT/10)
+    readImage("Project:Tiles")
+    tm = TileMap(readImage("Project:Tiles"),{
+    {1,2},
+    {3,4}
+    },{1,2,3,4},5,1,WIDTH/2,HEIGHT/2)
 end
 
 -- This function gets called once every frame
@@ -47,6 +51,8 @@ function draw()
     strokeWidth(5)
 
     -- Do your drawing here
+    noSmooth()
+    tm:draw()
     ss:draw()
     c:draw()
     ss.x = ss.x + c.dx * 5
