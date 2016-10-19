@@ -4,7 +4,10 @@
 function setup()
     print("Hello World!")
     readImage("Project:People")
-    ss = SpriteSheet(WIDTH/2,HEIGHT/2,WIDTH/10,HEIGHT/10,readImage("Project:People"),25,25,{1,2,1,3},1)
+    ss = SpriteSheet(WIDTH/2,HEIGHT/2,WIDTH/10,HEIGHT/10,readImage("Project:People"),25,25,1)
+    ss:fps(3)
+    ss:newSequence("default", 1,3,1,2)
+    ss:newSequence("random",10,11,12,13,14)
     
     --[[
     USAGE:
@@ -35,11 +38,10 @@ function setup()
     ]]--
     
     c = CircleJoystick(WIDTH/10,HEIGHT/10)
-    readImage("Project:Tiles")
-    tm = TileMap(readImage("Project:Tiles"),{
+    tm = TileMap(readImage("Project:People"),{
     {1,2},
-    {3,4}
-    },{1,2,3,4},5,1,WIDTH/2,HEIGHT/2)
+    {3,50}
+    },{},25,25,WIDTH/2,HEIGHT/2)
 end
 
 -- This function gets called once every frame
@@ -57,11 +59,10 @@ function draw()
     c:draw()
     ss.x = ss.x + c.dx * 5
     ss.y = ss.y + c.dy * 5
-    if c.tId and ss.timing == false then
-        ss:tStart(10)
-    elseif not c.tId and ss.timing == true then
-        ss:tStop()
-        ss:setFrame(1)
+    if c.tId and ss.playing == false then
+        ss:play("default")
+    elseif not c.tId and ss.playing == true then
+        ss:stopAt(1)
     end
 end
 
